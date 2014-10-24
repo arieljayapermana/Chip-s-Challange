@@ -9,5 +9,7 @@ package GUI;
  * @author i13050
  */
 public class Tester {
-    
+    public static void main(String[] args) {
+        
+    }
 }
