@@ -1,9 +1,0 @@
-package Object;
-
-public class Tile
-{
-      public Tile()
-      {
-      
-      }
-}
