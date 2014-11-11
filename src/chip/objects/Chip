@@ -1,0 +1,143 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package chip.objects;
+
+import java.awt.Image;
+import java.awt.Toolkit;
+
+/**
+ *
+ * @author Christofer Indra Sinarya
+ */
+public class Chip{
+    
+    private Image img;
+    private final Image IMG_KIRI;
+    private final Image IMG_KANAN;
+    private final Image IMG_ATAS;
+    private final Image IMG_BAWAH;
+    private final Image IMG_DEATH;
+    private int xCoordinate;
+    private int yCoordinate;
+    private int direction;
+    private boolean isAlive;
+
+    public Chip(int xCoordinate, int YCoordinate) {
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        this.IMG_KIRI = tk.getImage(this.getClass().getResource("images\\chipKiri.png"));
+        this.IMG_KANAN = tk.getImage(this.getClass().getResource("images\\chipKanan.png"));
+        this.IMG_ATAS = tk.getImage(this.getClass().getResource("images\\hipAtas.png"));
+        this.IMG_BAWAH = tk.getImage(this.getClass().getResource("images\\chipBawah.png"));
+        this.IMG_DEATH = tk.getImage(this.getClass().getResource("images\\death.png"));
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = YCoordinate;
+        this.direction = 2;
+        this.img = IMG_BAWAH;
+        this.isAlive = true;
+    }
+    
+    public void move(int direction,Tile[][] board)
+    {
+        if(this.direction!=direction)
+        {
+            this.direction = direction;
+            switch(direction)
+            {
+                case 2 : this.img=this.IMG_BAWAH;break;
+                case 8 : this.img=this.IMG_ATAS;break;
+                case 4 : this.img=this.IMG_KIRI;break;
+                case 6 : this.img=this.IMG_KANAN;break;
+            }
+        }
+        else
+        {
+            if (this.direction == 2)
+            {
+                if (board[xCoordinate+1][yCoordinate].isMoveable())
+                {
+                    if (board[xCoordinate+1][yCoordinate].isLethal())
+                    {
+                        this.isAlive=false;
+                        this.xCoordinate++;
+                        this.img = IMG_DEATH;
+                    }
+                    else
+                    {
+                        this.xCoordinate++;
+                    }
+                }
+            }
+            else if (this.direction == 8)
+            {
+                if (board[xCoordinate-1][yCoordinate].isMoveable())
+                {
+                    if (board[xCoordinate-1][yCoordinate].isLethal())
+                    {
+                        this.isAlive=false;
+                        this.xCoordinate--;
+                        this.img = IMG_DEATH;
+                    }
+                    else
+                    {
+                        this.xCoordinate--;
+                    }
+                }
+            }
+            else if (this.direction == 4)
+            {
+                if (board[xCoordinate][yCoordinate-1].isMoveable())
+                {
+                    if (board[xCoordinate][yCoordinate-1].isLethal())
+                    {
+                        this.isAlive=false;
+                        this.yCoordinate--;
+                        this.img = IMG_DEATH;
+                    }
+                    else
+                    {
+                        this.yCoordinate--;
+                    }
+                }
+            }
+            else
+            {
+                if (board[xCoordinate][yCoordinate+1].isMoveable())
+                {
+                    if (board[xCoordinate][yCoordinate+1].isLethal())
+                    {
+                        this.isAlive=false;
+                        this.yCoordinate++;
+                        this.img = IMG_DEATH;
+                    }
+                    else
+                    {
+                        this.yCoordinate++;
+                    }
+                }
+            }
+        }
+    }
+
+
+    public boolean isChipAlive() {
+        return isAlive;
+    }
+
+    public int getxCoordinate() {
+        return xCoordinate;
+    }
+
+    public int getyCoordinate() {
+        return yCoordinate;
+    }
+
+    public Image getImg()
+    {
+        return this.img;
+    }
+    
+}
