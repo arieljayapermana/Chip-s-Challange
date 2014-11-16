@@ -241,9 +241,26 @@ public class Interface extends javax.swing.JFrame implements KeyListener{
     @Override
     public void keyTyped(KeyEvent e) {
     }
-    
+
     @Override
     public void keyPressed(KeyEvent e) {
+        if (e.getKeyCode()== KeyEvent.VK_DOWN)
+        {
+            world.play(2);
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_UP)
+        {
+            world.play(8);
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_LEFT)
+        {
+            world.play(4);
+        }
+        else if (e.getKeyCode() == KeyEvent.VK_RIGHT)
+        {
+            world.play(6);
+        }
+        circuitsTextField.setText("" + Circuit.jumlahCircuit);
     }
 
     @Override
