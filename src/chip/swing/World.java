@@ -19,7 +19,7 @@ import javax.swing.JPanel;
  *
  * @author Ignasius
  */
-public class World extends JPanel{
+public class World extends JPanel implements ActionListener{
     
     private Tile[][] board;
     private Chip chip;
@@ -101,6 +101,12 @@ public class World extends JPanel{
         g.drawImage(chip.getImg(), chip.getXCoordinate()*board[0][0].getImg().getWidth(this) , chip.getYCoordinate()*board[0][0].getImg().getHeight(this), this);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        finish.changeImage();
+        repaint();
+    }
+    
     public void play(int direction)
     {
         if (chip.isChipAlive() && isFinish()== false )
