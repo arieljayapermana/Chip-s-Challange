@@ -6,15 +6,16 @@
 
 package chip.objects;
 
-
 /**
  *
  * @author Christofer Indra Sinarya
  */
 public class Water extends Tile{
 
+    public static boolean lethal = true;
+    
     public Water() {
-        this.img = tk.getImage(this.getClass().getResource("images\\water.png"));
+        this.img = tk.getImage("images\\water.png");
     }
 
     @Override
@@ -24,7 +25,7 @@ public class Water extends Tile{
 
     @Override
     public boolean isLethal() {
-        return true;
+        return lethal;
     }
     
 }
