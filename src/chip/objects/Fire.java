@@ -9,10 +9,12 @@ package chip.objects;
 
 /**
  *
- * @author Ariel Jayapermana
+ * @author i13019
  */
 public class Fire extends Tile{
 
+    public static boolean lethal = true;
+    
     public Fire() {
         this.img = tk.getImage("images\\fire.png");
     }
@@ -24,7 +26,7 @@ public class Fire extends Tile{
 
     @Override
     public boolean isLethal() {
-        return true;
+        return lethal;
     }
     
 }
