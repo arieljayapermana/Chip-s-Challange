@@ -1,0 +1,46 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package chip.objects;
+
+import java.awt.Image;
+import java.awt.Toolkit;
+
+/**
+ *
+ * @author i13019
+ */
+public class WaterShoes {
+    
+    public static int jumlahCircuit = 0;
+    private Image img;
+    private int xCoordinate;
+    private int yCoordinate;
+
+    public WaterShoes(int xCoordinate,int yCoordinate) {
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        this.img = tk.getImage("images\\waterShoes.png");
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        jumlahCircuit++;
+    }
+
+    public Image getImg()
+    {
+        return this.img;
+    }
+    
+    public int getXCoordinate()
+    {
+        return this.xCoordinate;
+    }
+    
+    public int getYCoordinate()
+    {
+        return this.yCoordinate;
+    }
+    
+}
