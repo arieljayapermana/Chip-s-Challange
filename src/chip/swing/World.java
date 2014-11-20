@@ -5,15 +5,15 @@
  */
 package chip.swing;
 import chip.objects.*;
-import com.sun.webkit.Timer;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.io.*;
+import sun.audio.*;
 
 /**
  *
@@ -27,14 +27,16 @@ public class World extends JPanel implements ActionListener{
     private Barrier barrier;
     private Finish finish;
     private String level;
+    private FireShoes fireShoes;
+    private WaterShoes waterShoes;
     
-    public World(String level)  throws FileNotFoundException 
+    public World(String level)  throws FileNotFoundException, IOException
     {
         this.level = level;
         addLevel(level);
     }
     
-    private void addLevel(String level) throws FileNotFoundException
+    public void addLevel(String level) throws FileNotFoundException
     {
         javax.swing.Timer timer = new javax.swing.Timer(500, this);
         timer.start();
@@ -67,7 +69,7 @@ public class World extends JPanel implements ActionListener{
                 else if (input.equals("*"))
                 {
                     board[j][i] = new Floor();
-                    chip = new Chip(i,j);
+                    chip = new Chip(j,i);
                 }
                 else if (input.equals("-"))
                 {
@@ -78,6 +80,20 @@ public class World extends JPanel implements ActionListener{
                 {
                     board[j][i] = new Floor();
                     finish = new Finish(j,i);
+                }
+                else if (input.equals("W"))
+                {
+                    board[j][i] = new Water();
+                }
+                else if (input.equals("B"))
+                {
+                    board[j][i] = new Floor();
+                    waterShoes = new WaterShoes(j,i);
+                }
+                else if (input.equals("R"))
+                {
+                    board[j][i] = new Floor();
+                    fireShoes = new FireShoes(j,i);
                 }
             }
         }
@@ -98,6 +114,14 @@ public class World extends JPanel implements ActionListener{
            }
         }
         g.drawImage(finish.getImg(), finish.getXCoordinate()*board[0][0].getImg().getWidth(this) , finish.getYCoordinate()*board[0][0].getImg().getHeight(this), this);
+        if (fireShoes!=null)
+        {
+        g.drawImage(fireShoes.getImg(), fireShoes.getXCoordinate()*board[0][0].getImg().getWidth(this) , fireShoes.getYCoordinate()*board[0][0].getImg().getHeight(this), this);   
+        }
+        if (waterShoes!=null)
+        {
+        g.drawImage(waterShoes.getImg(), waterShoes.getXCoordinate()*board[0][0].getImg().getWidth(this) , waterShoes.getYCoordinate()*board[0][0].getImg().getHeight(this), this);   
+        }
         g.drawImage(chip.getImg(), chip.getXCoordinate()*board[0][0].getImg().getWidth(this) , chip.getYCoordinate()*board[0][0].getImg().getHeight(this), this);
     }
 
@@ -120,6 +144,24 @@ public class World extends JPanel implements ActionListener{
                         Circuit.jumlahCircuit--;
                         circuits[i] = null;
                     }
+                }
+            }
+            if (fireShoes !=null)
+            {
+                if (chip.getXCoordinate() == fireShoes.getXCoordinate() && chip.getYCoordinate() == fireShoes.getYCoordinate())
+                {
+                    chip.setHasFireShoes(true);
+                    fireShoes = null;
+                    Fire.lethal = false;
+                }
+            }
+            if (waterShoes !=null)
+            {
+                if (chip.getXCoordinate() == waterShoes.getXCoordinate() && chip.getYCoordinate() == waterShoes.getYCoordinate())
+                {
+                    chip.setHasWaterShoes(true);
+                    waterShoes = null;
+                    Water.lethal = false;
                 }
             }
             if (Circuit.jumlahCircuit == 0)
@@ -152,5 +194,18 @@ public class World extends JPanel implements ActionListener{
         Circuit.jumlahCircuit = 0;
         this.addLevel(level);
     }
+
+    public FireShoes getFireShoes() {
+        return fireShoes;
+    }
+
+    public WaterShoes getWaterShoes() {
+        return waterShoes;
+    }
+
+    public Chip getChip() {
+        return chip;
+    }
     
+
 }
