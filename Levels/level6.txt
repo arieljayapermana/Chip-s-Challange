@@ -1,0 +1,16 @@
+3
+x x x x x x x x x x x x x x x
+x C x F F . . . x . W W x C x
+x . x F F . x . x . W W x . x
+x . . F F . x . x . W W . . x
+x . . F F . x . x . W W . . x
+x . . F F . x . x . W W . . x
+x . . F F . x R x . W W . . x
+x . . F F . x * x . W W . . x
+x . . F F . x B x . W W . . x
+x . . F F . x . x . W W . . x
+x . . F F . x . x . W W . . x
+x . . F F . x . x . W W . . x
+x . x F F . x . x . W W x - x
+x C x F F . x . . . W W x # x
+x x x x x x x x x x x x x x x

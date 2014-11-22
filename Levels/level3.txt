@@ -1,0 +1,21 @@
+8
+x x x x x x x x x x x x x x x
+x W W W W W W C W W W W W W x
+x W W C W W W W W W W W W W x
+x W W W W W W W W W C W W W x
+x W W W W W W W W W W W W W x
+x W C W W W W W W W W W W W x
+x W W W W W W * B W W W W W x
+x W W W W W W W W W W W W W x
+x W W W W C W W W W W W W W x
+x W W W W W W W W W W W W W x
+x W W W W W W W C W W W W W x
+x W W W W W W W W W W W W W x
+x W C W W W x - x W W W W W x
+x W W W W W x # x W W W W C x
+x x x x x x x x x x x x x x x
+
+
+B:blue(sepatu air)
+R:red(sepatu api)
+W:water

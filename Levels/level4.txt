@@ -1,0 +1,16 @@
+89
+x x x x x x x x x x x x x x x
+x C F C C C x C C C x C C C x
+x C x C x C C C x C C C x C x
+x C x C x x x x x x x x x C x
+x C x C x C C C C C C C x C x
+x C x C x C x x x x x C x C x
+x C x C x C x C C C x C x C x
+x C x C x C x * x C x C x C x
+x C x C x C x x x C x C x C x
+x C x C x C C C C C x C x C x
+x C x C x x x x x x x C x C x
+x C x C C C C C C C C C x C x
+x C x x x x x x x x x x x C x
+x C C C B x # - C W C W R C x
+x x x x x x x x x x x x x x x
