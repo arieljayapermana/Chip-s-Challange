@@ -6,19 +6,24 @@
 
 package chip.objects;
 
-
 /**
- * kelas yang merepresentasikan objek floor di dalam permainan
- * @author Ignasius David, Ariel Jayapermana, Christofer Sinarya
+ * kelas ini merepresentasikan objek water di dalam game
+ * @author Christofer Indra Sinarya, Ariel Jayapermana, Ignasius David
  */
-public class Floor extends Tile{
+public class Water extends Tile{
 
     /**
-     * constructor dari kelas floor
-     * menginisialisasi atribut dari kelas floor
+     *  atribut dari kelas water
+     *  selalu bernilai true, karena objek water menyebabkan chip mati
      */
-    public Floor() {
-        this.img = tk.getImage("images\\floor.png");
+    public static boolean lethal = true;
+    
+    /**
+     * constructor dari kelas Water
+     * menginisialisasi atribut-atribut yang dimiliki kelas Water
+     */
+    public Water() {
+        this.img = tk.getImage("images\\water.png");
     }
 
     /**
@@ -32,11 +37,11 @@ public class Floor extends Tile{
 
     /**
      * method untuk mencek apakah sebuah objek menyebabkan chip mati atau tidak
-     * @return false
-     */    
+     * @return lethal
+     */
     @Override
     public boolean isLethal() {
-        return false;
+        return lethal;
     }
     
 }

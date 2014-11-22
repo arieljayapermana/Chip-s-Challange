@@ -16,29 +16,73 @@ import java.io.*;
 import sun.audio.*;
 
 /**
- *
- * @author Ignasius
+ * kelas yang mengontrol dan mengendalikan permainan
+ * @author Ignasius David, Ariel Jayapermana, Christopher Indra Sinarya
  */
 public class World extends JPanel implements ActionListener{
     
+    /**
+     *  array 2 dimensi yang menampung objek-objek yang digunakan dalam permainan
+     */
     private Tile[][] board;
+    
+    /**
+     *  objek kelas chip. merepresentasikan karakter chip dalam permainan
+     */
     private Chip chip;
+    
+    /**
+     *  array yang menampung circuit yang harus diambil oleh chip
+     */
     private Circuit[] circuits;
-    private Barrier barrier;
-    private Finish finish;
+    
+    /**
+     *  objek kelas Barrier. merepresentasikan barier dalam permainan
+     */
+    private Barrier barrier;   
+    
+    /**
+     *  objek kelas Finish. merepresentasikan Finish dalam permainan
+     */
+    private Finish finish;   
+    
+    /**
+     *  atribut yang berisi karakter-karakter dari file text
+     *  setiap karakter akan dibaca sebagai sebuah objek didalam game
+     */
     private String level;
+    
+    /**
+     *  objek kelas FireShoes. merepresentasikan sepatu api dalam permainan
+     */
     private FireShoes fireShoes;
+        
+    /**
+     *  objek kelas WaterShoes. merepresentasikan sepatu air dalam permainan
+     */
     private WaterShoes waterShoes;
     
+    /**
+     * constructor kelas World
+     * membangun permainan dari parameter yang diterima
+     * @param level
+     * @throws FileNotFoundException
+     * @throws IOException 
+     */
     public World(String level)  throws FileNotFoundException, IOException
     {
         this.level = level;
         addLevel(level);
     }
     
+    /**
+     * method untuk membuat level dari parameter yang diberikan
+     * @param level
+     * @throws FileNotFoundException 
+     */
     public void addLevel(String level) throws FileNotFoundException
     {
-        javax.swing.Timer timer = new javax.swing.Timer(500, this);
+        Timer timer = new Timer(500, this);
         timer.start();
         this.level = level;
         board = new Tile[15][15];
@@ -78,7 +122,7 @@ public class World extends JPanel implements ActionListener{
                 }
                 else if (input.equals("#"))
                 {
-                    board[j][i] = new Floor();
+                    board[j][i] = new Finish(j,i);
                     finish = new Finish(j,i);
                 }
                 else if (input.equals("W"))
@@ -98,7 +142,11 @@ public class World extends JPanel implements ActionListener{
             }
         }
     }
-    
+    /**
+     * method untuk menggambarkan objek-objek dalam permainan
+     * @param g 
+     */
+    @Override
     public void paintComponent(Graphics g)
     {
        super.paintComponent(g);
@@ -125,12 +173,20 @@ public class World extends JPanel implements ActionListener{
         g.drawImage(chip.getImg(), chip.getXCoordinate()*board[0][0].getImg().getWidth(this) , chip.getYCoordinate()*board[0][0].getImg().getHeight(this), this);
     }
 
+    /**
+     * method untuk mengubah-ubah gambar finish sehingga tampak seperti bergerak
+     * @param e 
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         finish.changeImage();
         repaint();
     }
     
+    /**
+     * method untuk memainkan game berdasarkan input dari user
+     * @param direction 
+     */
     public void play(int direction)
     {
         if (chip.isChipAlive() && isFinish()== false )
@@ -172,6 +228,10 @@ public class World extends JPanel implements ActionListener{
         }
     }
     
+    /**
+     * method untuk mengetahui apakah suatu level sudah tamat atau belum
+     * @return true or false
+     */
     public boolean isFinish()
     {
         if (this.finish.getXCoordinate() == chip.getXCoordinate() && this.finish.getYCoordinate() == chip.getYCoordinate())
@@ -184,25 +244,48 @@ public class World extends JPanel implements ActionListener{
         }
     }
     
+    /**
+     * method untuk memindahkan objek chip sesuai dengan arah yang diinginkan
+     * @param direction 
+     */
     private void moveChip(int direction)
     {
         chip.move(direction, board);
     }
     
+    /**
+     * method untuk mereset ulang level sehingga kembali seperti semula
+     * @throws FileNotFoundException 
+     */
     public void restart() throws FileNotFoundException
     {
         Circuit.jumlahCircuit = 0;
         this.addLevel(level);
+        Water.lethal=true;
+        Fire.lethal=true;
+               
     }
 
+    /**
+     * getter untuk fire shoes
+     * @return fireShoes
+     */
     public FireShoes getFireShoes() {
         return fireShoes;
     }
 
+    /**
+     * getter untuk waterShoes
+     * @return waterShoes
+     */
     public WaterShoes getWaterShoes() {
         return waterShoes;
     }
 
+    /**
+     * getter untuk chip
+     * @return chip
+     */
     public Chip getChip() {
         return chip;
     }

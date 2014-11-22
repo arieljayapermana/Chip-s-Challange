@@ -8,22 +8,38 @@ package chip.objects;
 
 
 /**
- *
- * @author i13019
+ * kelas ini merepresentasikan objek api di dalam game
+ * @author Ariel Jayapermana, Ignasius David, Christofer Sinarya
  */
 public class Fire extends Tile{
-
+    
+    /**
+     *  atribut dari kelas fire
+     *  selalu bernilai true, karena objek fire menyebabkan chip mati
+     */
     public static boolean lethal = true;
     
+    /**
+     * constructor dari kelas Fire
+     * menginisialisasi atribut-atribut yang dimiliki kelas Fire
+     */
     public Fire() {
         this.img = tk.getImage("images\\fire.png");
     }
-
+    
+    /**
+     * method untuk mencek apakah objek bisa diinjak atau tidak
+     * @return true
+     */
     @Override
     public boolean isMoveable() {
         return true;
     }
-
+    
+    /**
+     * method untuk mencek apakah sebuah objek menyebabkan chip mati atau tidak
+     * @return true
+     */
     @Override
     public boolean isLethal() {
         return lethal;
