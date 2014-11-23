@@ -11,7 +11,7 @@ import java.awt.Toolkit;
 
 /**
  * kelas yang merepresentasikan objek water shoes
- * @author Ariel Jayapermana, Ignasius David, Christofer Indra Sinarya
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class WaterShoes {
     
