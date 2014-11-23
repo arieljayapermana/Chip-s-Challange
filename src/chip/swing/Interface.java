@@ -412,6 +412,8 @@ public class Interface extends javax.swing.JFrame implements KeyListener{
             Water.lethal = true;
             fireShoesInvent.setIcon(null);
             waterShoesInvent.setIcon(null);
+            levelTextField.setText(level+"");
+            circuitsTextField1.setText(Circuit.jumlahCircuit+"");
         }
         else
         {
