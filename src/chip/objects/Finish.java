@@ -10,7 +10,7 @@ import java.awt.Toolkit;
 
 /**
  * kelas ini merepresentasikan objek finish di dalam game
- * @author Ignasius David, Ariel Jayapermana, Christofer Sinarya
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class Finish extends Tile{
     
