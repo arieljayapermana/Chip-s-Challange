@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
 
 /**
  * JFrame dari game Chip's Challenge
- * @author Ignasius David Y (2013730019), Ariel Jayapermana(2013730050), Christofer Indra Sinarya (2013730042)
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class Interface extends javax.swing.JFrame implements KeyListener{
 
