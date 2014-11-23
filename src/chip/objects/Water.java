@@ -8,7 +8,7 @@ package chip.objects;
 
 /**
  * kelas ini merepresentasikan objek water di dalam game
- * @author Christofer Indra Sinarya, Ariel Jayapermana, Ignasius David
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class Water extends Tile{
 
