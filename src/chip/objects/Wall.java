@@ -9,7 +9,7 @@ package chip.objects;
 
 /**
  * kelas yang merepresentasikan wall di dalam game
- * @author Ariel Jayapermana, Ignasius David, Christofer Sinarya
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class Wall extends Tile{
     
