@@ -17,7 +17,7 @@ import sun.audio.*;
 
 /**
  * kelas yang mengontrol dan mengendalikan permainan
- * @author Ignasius David, Ariel Jayapermana, Christopher Indra Sinarya
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class World extends JPanel implements ActionListener{
     
@@ -123,7 +123,7 @@ public class World extends JPanel implements ActionListener{
                 else if (input.equals("#"))
                 {
                     board[j][i] = new Finish(j,i);
-                    finish = new Finish(j,i);
+                    finish = (Finish) board[j][i];
                 }
                 else if (input.equals("W"))
                 {
