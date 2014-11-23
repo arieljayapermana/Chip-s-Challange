@@ -9,7 +9,7 @@ package chip.objects;
 /**
  * kelas yang merepresentasikan barier yang menghalangi garis finish.
  * barier akan hilang jika semua circuit sudah didapatkan
- * @author Ignasius David, Ariel Jayapermana, Christofer Sinarya
+ * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
  */
 public class Barrier extends Tile{
 
