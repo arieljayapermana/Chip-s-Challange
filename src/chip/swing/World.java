@@ -231,6 +231,20 @@ public class World extends JPanel implements ActionListener{
                 board[barrier.getXCoordinate()][barrier.getYCoordinate()] = new Floor();
             }
             repaint();
+            String gongFile = "Music/click.wav";
+            InputStream in = null;
+            try {
+                in = new FileInputStream(gongFile);
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(World.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            AudioStream audioStream = null;
+            try {
+                audioStream = new AudioStream(in);
+            } catch (IOException ex) {
+                Logger.getLogger(World.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            AudioPlayer.player.start(audioStream);
         }
     }
     
