@@ -13,11 +13,13 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import javax.swing.*;
 import java.io.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import sun.audio.*;
 
 /**
  * kelas yang mengontrol dan mengendalikan permainan
- * @author Ignasius David Y (2013730019), Ariel Jayapermana (2013730050), Christofer Indra Sinarya (2013730042)
+ * @author Ignasius David, Ariel Jayapermana, Christopher Indra Sinarya
  */
 public class World extends JPanel implements ActionListener{
     
@@ -73,6 +75,10 @@ public class World extends JPanel implements ActionListener{
     {
         this.level = level;
         addLevel(level);
+        String gongFile = "Music/background.wav";
+        InputStream in = new FileInputStream(gongFile);
+        AudioStream audioStream = new AudioStream(in);
+        AudioPlayer.player.start(audioStream);
     }
     
     /**
